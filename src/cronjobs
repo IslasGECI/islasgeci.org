@@ -1,0 +1,7 @@
+# Variables de entorno:
+SHELL=/bin/bash
+HOME=/home/ciencia.datos
+
+# Cron jobs:
+0 0 * * * docker stop $(docker ps --quiet)
+0 1 * * * ${HOME}/repositorios/servidor/src/run_docker.sh

@@ -1,0 +1,1 @@
+docker run --detach --publish 8888:8888 --rm --volume ${HOME}/notebooks/:/workdir islasgeci/jupyter:3691

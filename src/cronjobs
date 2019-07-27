@@ -3,5 +3,6 @@ SHELL=/bin/bash
 HOME=/home/ciencia.datos
 
 # Cron jobs:
-0 0 * * * docker stop $(docker ps --quiet)
-0 1 * * * ${HOME}/repositorios/servidor/src/run_docker.sh
+ 0 0 * * mon-sat echo "$(date), docker stop, $(docker stop $(docker ps --quiet))"               >> ${HOME}/log/cron.log
+10 0 * * mon-sat echo "$(date), run_docker, $(${HOME}/repositorios/servidor/src/run_docker.sh)" >> ${HOME}/log/cron.log
+

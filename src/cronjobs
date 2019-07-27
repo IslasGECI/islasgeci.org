@@ -2,7 +2,10 @@
 SHELL=/bin/bash
 HOME=/home/ciencia.datos
 
+
 # Cron jobs:
- 0 0 * * mon-sat echo "$(date), docker stop, $(docker stop $(docker ps --quiet))"               >> ${HOME}/log/cron.log
-10 0 * * mon-sat echo "$(date), run_docker, $(${HOME}/repositorios/servidor/src/run_docker.sh)" >> ${HOME}/log/cron.log
+ 0 0 * *     sun echo "$(date), restart"  >> ${HOME}/log/cron.log && reboot
+ 0 0 * * mon-sat echo "$(date), docker stop, $(docker stop $(docker ps --quiet))"                >> ${HOME}/log/cron.log
+10 0 * *       * echo "$(date), run_docker,  $(${HOME}/repositorios/servidor/src/run_docker.sh)" >> ${HOME}/log/cron.log
+20 0 * *       * echo "$(date), uptime,      $(uptime)"                                          >> ${HOME}/log/cron.log
 

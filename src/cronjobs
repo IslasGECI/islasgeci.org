@@ -2,10 +2,13 @@
 SHELL=/bin/bash
 HOME=/home/ciencia.datos
 
+# Detén los contenedores
+@daily  sleep 000 && echo "$(date), docker stop, $(${HOME}/repositorios/servidor/src/stop_containers.sh)" >> ${HOME}/log/cron.log
+@daily  sleep 200 && echo "$(date), run_docker, $(${HOME}/repositorios/servidor/src/run_docker.sh)"       >> ${HOME}/log/cron.log
+@daily  sleep 300 && echo "$(date), uptime, $(uptime -p)"                                                 >> ${HOME}/log/cron.log
 
-# Cron jobs:
- 0 0 * *     sun echo "$(date), restart"  >> ${HOME}/log/cron.log && reboot
- 0 0 * * mon-sat echo "$(date), docker stop, $(${HOME}/repositorios/servidor/src/stop_containers.sh)" >> ${HOME}/log/cron.log
-10 0 * *       * echo "$(date), run_docker,  $(${HOME}/repositorios/servidor/src/run_docker.sh)"      >> ${HOME}/log/cron.log
-20 0 * *       * echo "$(date), uptime,      $(uptime)"                                               >> ${HOME}/log/cron.log
-
+# Reinicia el servidor
+@weekly sleep 100 && echo "$(date), reboot, $(uptime -p)"                                           >> ${HOME}/log/cron.log && /sbin/shutdown -r now
+@reboot sleep 200 && echo "$(date), run_docker, $(${HOME}/repositorios/servidor/src/run_docker.sh)" >> ${HOME}/log/cron.log
+@reboot sleep 300 && echo "$(date), uptime, $(uptime -p)"                                           >> ${HOME}/log/cron.log
+@reboot sleep 400 && echo "$(date), update, $(${HOME}/repositorios/servidor/src/update.sh)"         >> ${HOME}/log/cron.log

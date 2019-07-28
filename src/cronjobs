@@ -1,6 +1,7 @@
 # Variables de entorno:
-SHELL=/bin/bash
 HOME=/home/ciencia.datos
+SHELL=/bin/bash
+TZ=America/Los_Angeles
 
 # Detén los contenedores
 @daily  sleep 000 && echo "$(date), docker stop, $(${HOME}/repositorios/servidor/src/stop_containers.sh)" >> ${HOME}/log/cron.log

@@ -4,12 +4,13 @@ SHELL=/bin/bash
 TZ=America/Los_Angeles
 
 # Detén los contenedores
-@daily  sleep 000 && echo "$(date), docker stop, $(${HOME}/repositorios/servidor/src/stop_containers.sh)" >> ${HOME}/log/cron.log
-@daily  sleep 200 && echo "$(date), run_docker, $(${HOME}/repositorios/servidor/src/run_docker.sh)"       >> ${HOME}/log/cron.log
-@daily  sleep 300 && echo "$(date), uptime, $(uptime -p)"                                                 >> ${HOME}/log/cron.log
+@daily echo "$(date): stop_containers.sh" >> ${HOME}/log/cron.log && echo "$(${HOME}/repositorios/servidor/src/stop_containers.sh && ${HOME}/repositorios/servidor/src/run_docker.sh)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+@daily sleep 100 && echo "$(date): docker ps" >> ${HOME}/log/cron.log && echo "$(docker ps)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+@daily sleep 200 && echo "$(date): uptime" >> ${HOME}/log/cron.log && echo "$(uptime -p)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+@daily sleep 300 && echo "$(date): update" >> ${HOME}/log/cron.log && ${HOME}/repositorios/servidor/src/update.sh && echo "Updated. $(date)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
 
 # Reinicia el servidor
-@weekly sleep 100 && echo "$(date), reboot, $(uptime -p)"                                           >> ${HOME}/log/cron.log && /sbin/shutdown -r now
-@reboot sleep 200 && echo "$(date), run_docker, $(${HOME}/repositorios/servidor/src/run_docker.sh)" >> ${HOME}/log/cron.log
-@reboot sleep 300 && echo "$(date), uptime, $(uptime -p)"                                           >> ${HOME}/log/cron.log
-@reboot sleep 400 && echo "$(date), update, $(${HOME}/repositorios/servidor/src/update.sh)"         >> ${HOME}/log/cron.log
+@weekly echo "$(date): reboot" >> ${HOME}/log/cron.log && echo "$(uptime -p)" >> ${HOME}/log/cron.log && /sbin/shutdown -r now
+@reboot echo "" >> ${HOME}/log/cron.log && echo "$(date): run_docker.sh" >> ${HOME}/log/cron.log && echo "$(${HOME}/repositorios/servidor/src/run_docker.sh)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+@reboot sleep 100 && echo "$(date): docker ps" >> ${HOME}/log/cron.log && echo "$(docker ps)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+@reboot sleep 200 && echo "$(date): uptime" >> ${HOME}/log/cron.log && echo "$(uptime -p)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log

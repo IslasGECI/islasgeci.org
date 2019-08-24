@@ -1,4 +1,3 @@
-# Servidor islasgeci.org
+# Servidor IslasGECI.org
 
-Scripts para mantener el VPS de GECI andando
-
+Scripts para mantener el VPS de GECI

@@ -4,12 +4,12 @@ SHELL=/bin/bash
 TZ=America/Los_Angeles
 
 # Reinicia los contenedores
-@daily echo "$(date): Reinicia contenedores." >> ${HOME}/log/cron.log && echo "$(${HOME}/repositorios/servidor/src/stop_containers.sh && ${HOME}/repositorios/servidor/src/update_server.sh && ${HOME}/repositorios/servidor/src/start_containers.sh)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+@daily echo "$(date): Reinicia contenedores." >> ${HOME}/log/cron.log && echo "$(${HOME}/repositorios/servidor/src/stop_containers.sh && ${HOME}/repositorios/servidor/src/start_containers.sh)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
 0 1 * * * echo "$(date): docker ps" >> ${HOME}/log/cron.log && echo "$(docker ps)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
 0 2 * * * echo "$(date): uptime" >> ${HOME}/log/cron.log && echo "$(uptime -p)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
 
 # Reinicia el servidor
-@weekly echo "$(date): Reinicia el servidor." >> ${HOME}/log/cron.log && echo "$(uptime -p)" >> ${HOME}/log/cron.log && /sbin/shutdown -r now
+@weekly echo "$(date): Reinicia el servidor." >> ${HOME}/log/cron.log && echo "$(uptime -p && ${HOME}/repositorios/servidor/src/update_server.sh)" >> ${HOME}/log/cron.log && /sbin/shutdown -r now
 @reboot echo "Servidor reinició rorrectamente: $(date)" >> ${HOME}/log/cron.log && echo "$(date): Inicia contenedores" >> ${HOME}/log/cron.log && echo "$(${HOME}/repositorios/servidor/src/start_containers.sh)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
 @reboot sleep 100 && echo "$(date): docker ps" >> ${HOME}/log/cron.log && echo "$(docker ps)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
 @reboot sleep 200 && echo "$(date): uptime" >> ${HOME}/log/cron.log && echo "$(uptime -p)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log

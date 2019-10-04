@@ -11,5 +11,3 @@ docker run --detach --publish 8888:8888 --rm --volume ${HOME}/notebooks:/workdir
 # Sin volumen:
 docker run --detach --publish 5000:80   --rm islasgeci/tablero_front
 docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo
-#
-cd ${HOME}/repositorios/tamanio-poblacional-aves-marinas && make run

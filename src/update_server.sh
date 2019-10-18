@@ -6,4 +6,3 @@ apt dist-upgrade --yes
 apt full-upgrade --yes
 apt autoremove --yes
 apt clean --yes
-

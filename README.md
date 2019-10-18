@@ -15,3 +15,9 @@ Scripts para mantener el VPS de GECI
 1. Creamos un directorio para los repositorios: `mkdir ~/repositorios`
 1. Clonamos el repositorio Servidor: `cd ~/repositorios && git clone https://github.com/IslasGECI/servidor.git`
 1. Iniciamos los contenedores: `servidor/src/start_containers.sh`
+
+Otras instucciones:
+
+- `docker volume create gatos-trampas_vol`
+- `docker volume create jupyter_vol`
+- `docker volume create tablero_api_vol`

@@ -9,6 +9,7 @@ docker pull islasgeci/gatos-trampas:latest
 docker pull islasgeci/tablero_api:latest
 docker pull islasgeci/jupyter:latest
 # Actualiza imágenes sin volumen):
+docker pull islasgeci/homepage:latest
 docker pull islasgeci/tablero_front:latest
 docker pull islasgeci/nerd_demo:latest
 # Corre contenedores con volumen:
@@ -16,6 +17,7 @@ docker run --detach --publish  251:80   --rm --volume gatos-trampas_vol:/go/src/
 docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir islasgeci/tablero_api:latest
 docker run --detach --publish 8888:8888 --rm --volume jupyter_vol:/workdir islasgeci/jupyter:latest
 # Corre contenedores sin volumen:
+docker run --detach --publish   80:80   --rm islasgeci/homepage:latest
 docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
 docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
 #

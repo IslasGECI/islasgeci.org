@@ -23,3 +23,4 @@ Otras instucciones:
 - `docker volume create gatos-trampas_vol`
 - `docker volume create jupyter_vol`
 - `docker volume create tablero_api_vol`
+- Agrega variables de entorno `BITBUCKET_USERNAME` y `BITBUCKET_PASSWORD` a `~/.profile`

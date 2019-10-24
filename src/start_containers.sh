@@ -20,5 +20,3 @@ docker run --detach --publish 8888:8888 --rm --volume jupyter_vol:/workdir islas
 docker run --detach --publish   80:80   --rm islasgeci/homepage:latest
 docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
 docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
-#
-cd ${PATH_TO_REPOS}/tamanio-poblacional-aves-marinas && make run

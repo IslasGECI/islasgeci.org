@@ -18,6 +18,9 @@ Scripts para mantener el VPS de GECI
 
 Otras instucciones:
 
+- `mkdir ~/log && touch ~/log/cron.log`
+- `sudo dpkg-reconfigure tzdata`
 - `docker volume create gatos-trampas_vol`
 - `docker volume create jupyter_vol`
 - `docker volume create tablero_api_vol`
+- Agrega variables de entorno `BITBUCKET_USERNAME` y `BITBUCKET_PASSWORD` a `~/.profile`

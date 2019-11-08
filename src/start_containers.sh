@@ -14,6 +14,7 @@ docker pull islasgeci/tablero_front:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_front:latest
+docker pull rocker/tidyverse:latest
 # Corre contenedores con volumen:
 docker run --detach --publish  251:80   --rm --volume gatos-trampas_vol:/go/src/bitbucket.org/IslasGECI/gatos-trampas islasgeci/gatos-trampas:latest ./mapa-gatos
 docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir islasgeci/tablero_api:latest
@@ -25,3 +26,4 @@ docker run --detach --publish  851:4000 --rm islasgeci/tamanio-poblacional-aves-
 docker run --detach --publish  852:5000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
 docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
+docker run --detach --publish 8787:8787 --rm --env PASSWORD=4705 rocker/tidyverse:latest

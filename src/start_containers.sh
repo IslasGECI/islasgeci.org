@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 #
 # Corre los contenedores de Docker del servidor islasgeci.org
-#
-# Variables:
-PATH_TO_REPOS=${HOME}/repositorios
+
 # Actualiza imágenes:
 docker pull islasgeci/gatos-trampas:latest
 docker pull islasgeci/homepage:latest
@@ -28,4 +26,4 @@ docker run --detach --publish  851:4000 --rm islasgeci/tamanio-poblacional-aves-
 docker run --detach --publish  852:5000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
 docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
-docker run --detach --publish 8787:8787 --rm --env PASSWORD=4705 rocker/tidyverse:latest
+docker run --detach --publish 8787:8787 --rm --env PASSWORD=${RSTUDIO_PASSWORD} rocker/tidyverse:latest

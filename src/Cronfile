@@ -19,4 +19,3 @@ TZ=America/Los_Angeles
 0 12 * * * cp ${HOME}/repositorios/gatos-trampas/data/gatos.db ${HOME}/repositorios/datos-binarios/sqlite/gatos_$(date "+\%d").db
 0 12 1 * * cp ${HOME}/repositorios/gatos-trampas/data/gatos.db ${HOME}/repositorios/datos-binarios/sqlite/gatos_$(date "+\%m\%d").db
 0 12 * * * cp ${HOME}/repositorios/tablero_api/data/testmake.log.csv ${HOME}/repositorios/tablero_api/data/testmake.$(date "+\%d").csv
-0 12 2,9,16,23,30 * * cp ${HOME}/repositorios/tablero_api/data/testmake.log.csv ${HOME}/repositorios/tablero_api/data/testmake.$(date "+\%m\%d").csv && echo "analista,es_make_exitoso,es_phony,existe_objetivo,id,maquina,objetivo,phony,repo,revision,timestamp" > ${HOME}/repositorios/tablero_api/data/testmake.log.csv

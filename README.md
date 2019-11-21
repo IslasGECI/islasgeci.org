@@ -15,6 +15,8 @@ Scripts para mantener el VPS de GECI
 1. Crea volúmenes que será unsados por los contenedores:
     - `docker volume create gatos-trampas_vol`
     - `docker volume create jupyter_vol`
+    - `docker volume create reproducibility_inspector_vol`
+    - `docker volume create secrets_vol`
     - `docker volume create tablero_api_vol`
 1. Instala Docker Compose:
     - `sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`

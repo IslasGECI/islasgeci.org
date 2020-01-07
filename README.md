@@ -4,6 +4,7 @@ Scripts para mantener el VPS de GECI
 
 ## Después de formatear el servidor
 
+1. En el portal de Azure, en _Network security group > Inbound security rules_ agrega una regla para permitir el tráfico a los puertos 100-9999. (En el futuro debería ser sólo 8000-8999.)
 1. Agrega clave SSH local a servidor: `ssh-copy-id ciencia_datos@islasgeci.org`
 1. Actualiza el sistema operativo: `sudo apt update && sudo apt dist-upgrade --yes && sudo apt autoremove --yes`
 1. Configura zona horaria: `sudo dpkg-reconfigure tzdata` (selecciona `America/Los_Angeles`)
@@ -25,3 +26,4 @@ Scripts para mantener el VPS de GECI
 1. Configura crontab: `cd ~/repositorios/servidor && make crontab`
 1. Crea archivo para registrar la salida de las tareas realizadas por crontab: `mkdir ~/log && touch ~/log/cron.log`
 1. Inicia los contenedores: `servidor/src/start_containers.sh`
+

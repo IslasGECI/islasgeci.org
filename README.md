@@ -11,6 +11,7 @@ Scripts para mantener el VPS de GECI
 1. Agrega variables de entorno a `~/.profile` (sustituye <USUARIO> y <CONTRASEÑA> con las credenciales correspondientes):
     - `export BITBUCKET_USERNAME=<USUARIO>`
     - `export BITBUCKET_PASSWORD=<CONTRASEÑA>`
+    - `export RSTUDIO_PASSWORD=<CONTRASEÑA>`
 1. Instala Make y Docker `sudo apt install make docker.io`
 1. Agrega usuario al grupo `docker` para correr Docker sin sudo : `sudo usermod -aG docker $USER` (hay que salir y volver a entrar para que los cambios tengan efecto)
 1. Prueba la instalaciób de Docker: `docker run hello-world`

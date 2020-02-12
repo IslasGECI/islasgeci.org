@@ -26,4 +26,4 @@ Scripts para mantener el VPS de GECI
 1. Clona el repositorio Servidor: `cd ~/repositorios && git clone https://github.com/IslasGECI/servidor.git`
 1. Configura crontab: `cd ~/repositorios/servidor && make crontab`
 1. Crea archivo para registrar la salida de las tareas realizadas por crontab: `mkdir ~/log && touch ~/log/cron.log`
-1. Inicia los contenedores: `servidor/src/start_containers.sh`
+1. Inicia los contenedores: `servidor/src/start_containers`

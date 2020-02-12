@@ -1,0 +1,21 @@
+# Variables de entorno:
+HOME=/home/ciencia_datos
+SHELL=/bin/bash
+TZ=America/Los_Angeles
+
+# Reinicia los contenedores
+@daily echo "$(date): Reinicia contenedores." >> ${HOME}/log/cron.log && ${HOME}/repositorios/servidor/src/stop_containers && echo "OK: stop_containers" >> ${HOME}/log/cron.log || echo "ERROR: stop_containers" >> ${HOME}/log/cron.log && . ${HOME}/.profile && ${HOME}/repositorios/servidor/src/start_containers && echo "OK: start_containers" >> ${HOME}/log/cron.log || echo "ERROR: start_containers" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+0 1 * * * echo "$(date): docker ps" >> ${HOME}/log/cron.log && echo "$(docker ps)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+0 2 * * * echo "$(date): uptime" >> ${HOME}/log/cron.log && echo "$(uptime -p)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+
+# Reinicia el servidor
+@weekly echo "$(date): Reinicia el servidor." >> ${HOME}/log/cron.log && echo "$(uptime -p && ${HOME}/repositorios/servidor/src/update_server)" >> ${HOME}/log/cron.log && /sbin/shutdown -r now
+@reboot echo "Servidor reinició rorrectamente: $(date)" >> ${HOME}/log/cron.log && echo "$(date): Inicia contenedores" >> ${HOME}/log/cron.log && echo "$(${HOME}/repositorios/servidor/src/start_containers)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+@reboot sleep 100 && echo "$(date): docker ps" >> ${HOME}/log/cron.log && echo "$(docker ps)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+@reboot sleep 200 && echo "$(date): uptime" >> ${HOME}/log/cron.log && echo "$(uptime -p)" >> ${HOME}/log/cron.log && echo "" >> ${HOME}/log/cron.log
+
+# Respalda bases de datos:
+0 12 * * * cp ${HOME}/repositorios/gatos-trampas/data/gatos.db ${HOME}/repositorios/datos-binarios/sqlite/gatos.db
+0 12 * * * cp ${HOME}/repositorios/gatos-trampas/data/gatos.db ${HOME}/repositorios/datos-binarios/sqlite/gatos_$(date "+\%d").db
+0 12 1 * * cp ${HOME}/repositorios/gatos-trampas/data/gatos.db ${HOME}/repositorios/datos-binarios/sqlite/gatos_$(date "+\%m\%d").db
+0 12 * * * cp ${HOME}/repositorios/tablero_api/data/testmake.log.csv ${HOME}/repositorios/tablero_api/data/testmake.$(date "+\%d").csv

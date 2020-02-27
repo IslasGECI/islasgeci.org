@@ -4,6 +4,7 @@
 
 # Actualiza imágenes:
 docker pull islasgeci/gatos-trampas:latest
+docker pull islasgeci/glmm:latest
 docker pull islasgeci/homepage:latest
 docker pull islasgeci/jupyter:latest
 docker pull islasgeci/nerd_demo:latest
@@ -18,6 +19,7 @@ docker pull rocker/tidyverse:latest
 docker run --detach                     --rm --volume secrets_vol:/.vault --volume /var/run/docker.sock:/var/run/docker.sock islasgeci/tag_docker_images:latest
 docker run --detach --publish  251:3000 --rm --volume gatos-trampas_vol:/go/src/bitbucket.org/IslasGECI/gatos-trampas islasgeci/gatos-trampas:latest ./mapa-gatos
 docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir islasgeci/tablero_api:latest
+docker run --detach --publish 8686:8888 --rm --volume yuliana_vol:/workdir islasgeci/glmm:latest bash -c "jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''"
 docker run --detach --publish 8888:8888 --rm --volume jupyter_vol:/workdir islasgeci/jupyter:latest
 # Corre contenedores sin volumen:
 docker run --detach --publish   80:80   --rm islasgeci/homepage:latest

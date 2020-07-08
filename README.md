@@ -5,9 +5,8 @@ Scripts para mantener el VPS de GECI
 ## Después de formatear el servidor
 
 1. Permite el tráfico a los puertos 100-9999. (En el futuro debería ser sólo 8000-8999.)
-    1. En el portal de Azure, en _Network security group > Inbound security rules_ agrega una regla
-       para permitir el tráfico a los puertos 100-9999.
-    1. En DigitalOcean...
+   - En el portal de Azure, en _Network security group > Inbound security rules_ agrega una regla
+     para permitir el tráfico a los puertos 100-9999.
 1. Agrega clave SSH local a servidor: `ssh-copy-id ciencia_datos@islasgeci.org`
 1. Actualiza el sistema operativo: `sudo apt update && sudo apt full-upgrade --yes && sudo apt
    autoremove --yes`

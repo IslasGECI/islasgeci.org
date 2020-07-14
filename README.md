@@ -25,4 +25,4 @@ Scripts para mantener el VPS de GECI
 1. Configura crontab: `cd ~/repositorios/servidor && make crontab`
 1. Crea archivo para registrar la salida de las tareas realizadas por crontab: `mkdir --parents
    ${HOME}/var/log && touch ${HOME}/var/log/cron.log`
-1. Inicia los contenedores: `servidor/src/start_containers`
+1. Inicia los contenedores: `src/start_containers`

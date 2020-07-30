@@ -1,6 +1,6 @@
 # Variables de entorno:
 HOME=/home/ciencia_datos
-LOG=${HOME}/var/log/cron.log
+LOG=/home/ciencia_datos/var/log/cron.log
 SHELL=/bin/bash
 TZ=America/Los_Angeles
 
@@ -15,5 +15,3 @@ TZ=America/Los_Angeles
 @reboot sleep 100 && echo "$(date): docker ps" >> ${LOG} && echo "$(docker ps)" >> ${LOG} && echo "" >> ${LOG}
 @reboot sleep 200 && echo "$(date): uptime" >> ${LOG} && echo "$(uptime -p)" >> ${LOG} && echo "" >> ${LOG}
 
-# Respalda bases de datos:
-0 12 * * * cp ${HOME}/repositorios/tablero_api/data/testmake.log.csv ${HOME}/repositorios/tablero_api/data/testmake.$(date "+\%d").csv

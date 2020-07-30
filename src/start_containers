@@ -13,7 +13,6 @@ docker pull islasgeci/tag_docker_images:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_front:latest
-docker pull rocker/tidyverse:latest
 # Corre contenedores con volumen:
 docker run --detach                     --rm --volume secrets_vol:/.vault --volume /var/run/docker.sock:/var/run/docker.sock islasgeci/tag_docker_images:latest
 docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir islasgeci/tablero_api:latest
@@ -26,4 +25,4 @@ docker run --detach --publish 8510:4000 --rm islasgeci/tamanio-poblacional-aves-
 docker run --detach --publish 8520:5000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
 docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
-docker run --detach --publish 8787:8787 --rm --env DISABLE_AUTH=true rocker/tidyverse:latest
+

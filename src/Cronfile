@@ -5,7 +5,7 @@ SHELL=/bin/bash
 TZ=America/Los_Angeles
 
 # Reinicia los contenedores
-@daily echo "$(date): Reinicia contenedores." >> ${LOG} && ${HOME}/repositorios/servidor/src/stop_containers && echo "OK: stop_containers" >> ${LOG} || echo "ERROR: stop_containers" >> ${LOG} && . ${HOME}/.profile && ${HOME}/repositorios/servidor/src/start_containers && echo "OK: start_containers" >> ${LOG} || echo "ERROR: start_containers" >> ${LOG} && echo "" >> ${LOG}
+@daily echo "$(date): Reinicia contenedores." >> ${LOG} && ${HOME}/repositorios/servidor/src/stop_containers && echo "OK: stop_containers" >> ${LOG} || echo "ERROR: stop_containers" >> ${LOG} && ${HOME}/repositorios/servidor/src/start_containers && echo "OK: start_containers" >> ${LOG} || echo "ERROR: start_containers" >> ${LOG} && echo "" >> ${LOG}
 0 1 * * * echo "$(date): docker ps" >> ${LOG} && echo "$(docker ps)" >> ${LOG} && echo "" >> ${LOG}
 0 2 * * * echo "$(date): uptime" >> ${LOG} && echo "$(uptime -p)" >> ${LOG} && echo "" >> ${LOG}
 

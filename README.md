@@ -23,8 +23,7 @@ Scripts para mantener el VPS de GECI
     1. Instala Ansible en tu estación de trabajo: `sudo apt update && sudo apt install ansible --yes`
     1. Agrega islasgeci.org a tu inventario:
         1. Abre tu inventario para edición: `sudo vim /etc/ansible/hosts`
-        1. Agrega la línea: `islasgeci ansible_host=islasgeci.org ansible_user=ciencia_datos` bajo
-           el grupo `[webservers]` (agrega el grupo si no existe)
+        1. Agrega la línea: `islasgeci ansible_host=islasgeci.org ansible_user=ciencia_datos`
         1. Guarda los cambios y sal del editor
     1. Verifica la configuración: `ansible islasgeci --module-name ping --become`
 1. Configura islasgeci.org mediante Ansible desde tu estación de trabajo:

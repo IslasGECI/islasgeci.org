@@ -5,9 +5,25 @@ Scripts para mantener el VPS de GECI
 ## Después de formatear el servidor
 
 1. Permite el tráfico a los puertos 100-9999. (En el futuro debería ser sólo 8000-8999.)
-   - En el portal de Azure, en _Network security group > Inbound security rules_ agrega una regla
-     para permitir el tráfico a los puertos 100-9999.
-1. Agrega clave SSH local a servidor: `ssh-copy-id ciencia_datos@islasgeci.org`
+    - En el portal de Azure, en _Network security group > Inbound security rules_ agrega una regla
+      para permitir el tráfico a los puertos 100-9999.
+    - En DigitalOcean no necesitas hacer cambios.
+1. Crea y configura al usuario _ciencia_datos_:
+    1. Entra al servidor: `ssh root@islasgeci.org`
+    1. Crea usuario: `adduser ciencia_datos`
+    1. Agrega usuario a grupo: `usermod -aG sudo ciencia_datos`
+    1. Sal del servidor: `exit`
+    1. (Si no lo haz hecho, crea tu clave SSH en tu estación de trabajo: `ssh-keygen`)
+    1. Agrega tu clave SSH de tu estación de trabajo al servidor: `ssh-copy-id ciencia_datos@islasgeci.org`
+1. Configura Ansible en tu estación de trabajo:
+    1. Verifica la conexión: `ansible islasgeci --module-name ping`
+
+1. En tu estación de trabajo ejecuta: `ansible-playbook islasgeci.yml`
+
+
+
+
+
 1. Actualiza el sistema operativo: `sudo apt update && sudo apt full-upgrade --yes && sudo apt
    autoremove --yes`
 1. Configura zona horaria: `sudo dpkg-reconfigure tzdata` (selecciona `America/Los_Angeles`)

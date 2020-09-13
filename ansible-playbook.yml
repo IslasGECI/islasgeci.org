@@ -33,6 +33,15 @@
     - name: Instala Docker SDK para Python
       pip:
         name: docker
+    - name: Agrega '{{ ansible_user_id }}' al grupo docker
+      user:
+        name: '{{ ansible_user_id }}'
+        groups: docker
+        append: yes
+      become: yes
+    - name: Reinicia servidor
+      reboot:
+      become: yes
     - name: Prueba Docker
       docker_container:
         name: hello-world

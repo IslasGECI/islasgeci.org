@@ -32,17 +32,10 @@ Scripts para mantener el VPS de GECI
     1. Corre el _playbook_: `ansible-playbook .yml`
 
 
-1. Actualiza el sistema operativo: `sudo apt update && sudo apt full-upgrade --yes && sudo apt
-   autoremove --yes`
-1. Configura zona horaria: `sudo dpkg-reconfigure tzdata` (selecciona `America/Los_Angeles`)
 1. Agrega variables de entorno a `~/.profile` (sustituye <USUARIO> y <CONTRASEÑA> con las
    credenciales correspondientes):
     - `export BITBUCKET_USERNAME=<USUARIO>`
     - `export BITBUCKET_PASSWORD=<CONTRASEÑA>`
-1. Instala Make y Docker `sudo apt install --yes make docker.io`
-1. Agrega usuario al grupo `docker` para correr Docker sin sudo : `sudo usermod -aG docker $USER`
-   (hay que salir y volver a entrar para que los cambios tengan efecto)
-1. Prueba la instalación de Docker: `docker run hello-world`
 1. Crea un directorio para los repositorios: `mkdir ~/repositorios`
 1. Clona el repositorio Servidor: `cd ~/repositorios && git clone
    https://github.com/IslasGECI/servidor.git`

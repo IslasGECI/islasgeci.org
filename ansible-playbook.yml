@@ -10,6 +10,7 @@
         upgrade: dist
         update_cache: yes
       become: yes
+      notify: Reinicia servidor
     - name: Instala Docker
       apt:
         name: "docker.io"
@@ -33,15 +34,21 @@
     - name: Instala Docker SDK para Python
       pip:
         name: docker
+      notify: Reinicia servidor
     - name: Agrega '{{ ansible_user_id }}' al grupo docker
       user:
         name: '{{ ansible_user_id }}'
         groups: docker
         append: yes
       become: yes
+      notify: Reinicia servidor
+  handlers:
     - name: Reinicia servidor
       reboot:
       become: yes
+
+- hosts: islasgeci
+  tasks:
     - name: Prueba Docker
       docker_container:
         name: hello-world

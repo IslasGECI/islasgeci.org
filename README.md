@@ -29,7 +29,7 @@ Scripts para mantener el VPS de GECI
 1. Configura islasgeci.org mediante Ansible desde tu estación de trabajo:
     1. Clona este repositorio: `git clone https://github.com/IslasGECI/islasgeci.org.git`
     1. Entra al repositorio: `cd islasgeci.org`
-    1. Corre el _playbook_: `ansible-playbook .yml`
+    1. Corre el _playbook_: `ansible-playbook ansible-playbook.yml`
 
 
 1. Agrega variables de entorno a `~/.profile` (sustituye <USUARIO> y <CONTRASEÑA> con las

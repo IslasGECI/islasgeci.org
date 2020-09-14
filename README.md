@@ -40,6 +40,4 @@ Scripts para mantener el VPS de GECI
     - `export BITBUCKET_USERNAME=<USUARIO>`
     - `export BITBUCKET_PASSWORD=<CONTRASEÑA>`
 1. Configura crontab: `cd ~/repositorios/servidor && make crontab`
-1. Crea archivo para registrar la salida de las tareas realizadas por crontab: `mkdir --parents
-   ${HOME}/var/log && touch ${HOME}/var/log/cron.log`
 1. Inicia los contenedores: `src/start_containers`

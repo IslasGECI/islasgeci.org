@@ -42,6 +42,15 @@
         append: yes
       become: yes
       notify: Reinicia servidor
+    - name: Copia los archivos de código
+      copy:
+        src: src
+        dest: "{{ ansible_facts.user_dir }}"
+    - name: Crea directorio para guardar logs
+      file:
+        path: "{{ ansible_facts.user_dir }}/var/log"
+        state: directory
+        recurse: yes
   handlers:
     - name: Reinicia servidor
       reboot:
@@ -53,7 +62,3 @@
       docker_container:
         name: hello-world
         image: hello-world
-    - name: Copia los archivos de código
-      copy:
-        src: src
-        dest: "{{ ansible_facts.user_dir }}"

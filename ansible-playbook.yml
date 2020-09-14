@@ -46,12 +46,16 @@
       copy:
         src: src
         dest: "{{ ansible_facts.user_dir }}"
+      notify: Configura crontab
     - name: Crea directorio para guardar logs
       file:
         path: "{{ ansible_facts.user_dir }}/var/log"
         state: directory
         recurse: yes
   handlers:
+    - name: Configura crontab
+      shell: "crontab {{ ansible_facts.user_dir }}/src/Cronfile"
+      become: yeConfigura crontabs
     - name: Reinicia servidor
       reboot:
       become: yes

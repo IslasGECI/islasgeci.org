@@ -31,14 +31,14 @@ Scripts para mantener el VPS de GECI
     1. Entra al repositorio: `cd islasgeci.org`
     1. Corre el _playbook_: `ansible-playbook ansible-playbook.yml`
 
+---
+
+### Falta pasar esto a Ansible:
 
 1. Agrega variables de entorno a `~/.profile` (sustituye <USUARIO> y <CONTRASEÑA> con las
    credenciales correspondientes):
     - `export BITBUCKET_USERNAME=<USUARIO>`
     - `export BITBUCKET_PASSWORD=<CONTRASEÑA>`
-1. Crea un directorio para los repositorios: `mkdir ~/repositorios`
-1. Clona el repositorio Servidor: `cd ~/repositorios && git clone
-   https://github.com/IslasGECI/servidor.git`
 1. Configura crontab: `cd ~/repositorios/servidor && make crontab`
 1. Crea archivo para registrar la salida de las tareas realizadas por crontab: `mkdir --parents
    ${HOME}/var/log && touch ${HOME}/var/log/cron.log`

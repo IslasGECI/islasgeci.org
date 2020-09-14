@@ -53,3 +53,7 @@
       docker_container:
         name: hello-world
         image: hello-world
+    - name: Copia los archivos de código
+      copy:
+        src: src
+        dest: "{{ ansible_facts.user_dir }}"

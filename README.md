@@ -35,8 +35,4 @@ Archivos de código para mantener el VPS de GECI
 
 ### Falta pasar esto a Ansible:
 
-1. Agrega variables de entorno a `~/.profile` (sustituye <USUARIO> y <CONTRASEÑA> con las
-   credenciales correspondientes):
-    - `export BITBUCKET_USERNAME=<USUARIO>`
-    - `export BITBUCKET_PASSWORD=<CONTRASEÑA>`
-1. Inicia los contenedores: `src/start_containers`
+- Crea un volumen de Docker con los secretos del equipo. ([Ver más información.](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing))

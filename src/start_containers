@@ -15,9 +15,9 @@ docker pull islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_front:latest
 docker pull mysql:8
 # Carga credenciales:
-$(docker run --rm --volume secrets_vol:/.vault alpine cat /.vault/.secrets)
+source ${HOME}/.vault/.secrets
 # Corre contenedores con volumen:
-docker run --detach                     --rm --volume secrets_vol:/.vault --volume /var/run/docker.sock:/var/run/docker.sock islasgeci/tag_docker_images:latest
+docker run --detach                     --rm --volume ${HOME}/.vault:/.vault --volume /var/run/docker.sock:/var/run/docker.sock islasgeci/tag_docker_images:latest
 docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir islasgeci/tablero_api:latest
 docker run --detach --publish 3306:3306 --rm --volume siap_mysql_vol:/var/lib/mysql --env="MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" --name siap mysql:8
 docker run --detach --publish 8686:8888 --rm --volume yuliana_vol:/workdir islasgeci/glmm:latest bash -c "jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''"

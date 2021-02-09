@@ -27,8 +27,8 @@ docker run --detach --publish 8888:8888 --rm --volume jupyter_vol:/workdir islas
 docker run --detach --publish   80:80   --rm islasgeci/homepage:latest
 docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
 docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
+docker run --detach --publish 8081:80   --rm --link islas_mysql_db:mysql --env-file /home/ciencia_datos/.env islasgeci/islas.org.mx
 docker run --detach --publish 8500:80   --rm islasgeci/tamanio-poblacional-aves-marinas_front:latest
 docker run --detach --publish 8510:4000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
 docker run --detach --publish 8520:5000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker run --detach --publish 8999:80   --rm islasgeci/kata_flbc_jxavierpp
-

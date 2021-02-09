@@ -14,7 +14,7 @@ docker pull islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_front:latest
 docker pull mysql:8
-# Carga credenciales:
+# Carga credenciales:t
 $(docker run --rm --volume secrets_vol:/.vault alpine cat /.vault/.secrets)
 # Corre contenedores con volumen:
 docker run --detach                     --rm --volume secrets_vol:/.vault --volume /var/run/docker.sock:/var/run/docker.sock islasgeci/tag_docker_images:latest
@@ -24,8 +24,9 @@ docker run --detach --publish 8686:8888 --rm --volume yuliana_vol:/workdir islas
 docker run --detach --publish 8888:8888 --rm --volume jupyter_vol:/workdir islasgeci/jupyter:latest
 # Corre contenedores sin volumen:
 docker run --detach --publish   80:80   --rm islasgeci/homepage:latest
+docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
+docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
 docker run --detach --publish 8500:80   --rm islasgeci/tamanio-poblacional-aves-marinas_front:latest
 docker run --detach --publish 8510:4000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
 docker run --detach --publish 8520:5000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
-docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
-docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
+docker run --detach --publish 8999:80   --rm islasgeci/kata_flbc_jxavierpp

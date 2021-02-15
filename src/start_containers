@@ -14,7 +14,7 @@ docker pull islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker pull islasgeci/tamanio-poblacional-aves-marinas_front:latest
 docker pull mysql:8
-# Carga credenciales:t
+# Carga credenciales:
 $(docker run --rm --volume secrets_vol:/.vault alpine cat /.vault/.secrets)
 # Corre contenedores con volumen:
 docker run --detach                     --rm --volume secrets_vol:/.vault --volume /var/run/docker.sock:/var/run/docker.sock islasgeci/tag_docker_images:latest

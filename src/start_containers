@@ -5,7 +5,9 @@
 # Actualiza imágenes:
 docker pull islasgeci/glmm:latest
 docker pull islasgeci/homepage:latest
+docker pull islasgeci/islas.org.mx:latest
 docker pull islasgeci/jupyter:latest
+docker pull islasgeci/kata_flbc_jxavierpp:latest
 docker pull islasgeci/nerd_demo:latest
 docker pull islasgeci/tablero_api:latest
 docker pull islasgeci/tablero_front:latest

@@ -20,7 +20,7 @@ $(docker run --rm --volume secrets_vol:/.vault alpine cat /.vault/.secrets)
 docker run --detach                     --rm --volume secrets_vol:/.vault --volume /var/run/docker.sock:/var/run/docker.sock islasgeci/tag_docker_images:latest
 docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir islasgeci/tablero_api:latest
 docker run --detach --publish 3306:3306 --rm --volume siap_mysql_vol:/var/lib/mysql --env="MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" --name siap mysql:8
-docker run --detach --publish 3307:3307 --rm --volume islas_mysql_db_data:/var/lib/mysql --name islas_mysql_db --env-file /home/ciencia_datos/.env mysql:8.0 --default-authentication-plugin=mysql_native_password
+docker run --detach --env-file /home/ciencia_datos/.env --name islas_mysql_db --publish 3307:3307 --rm --volume islas_mysql_db_data:/var/lib/mysql mysql:8.0 --default-authentication-plugin=mysql_native_password
 docker run --detach --publish 8686:8888 --rm --volume yuliana_vol:/workdir islasgeci/glmm:latest bash -c "jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''"
 docker run --detach --publish 8888:8888 --rm --volume jupyter_vol:/workdir islasgeci/jupyter:latest
 # Corre contenedores sin volumen:

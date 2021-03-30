@@ -3,7 +3,6 @@
 # Corre los contenedores de Docker del servidor islasgeci.org
 
 # Actualiza imágenes:
-docker pull islasgeci/glmm:latest
 docker pull islasgeci/homepage:latest
 docker pull islasgeci/nerd_demo:latest
 docker pull islasgeci/tablero_api:latest

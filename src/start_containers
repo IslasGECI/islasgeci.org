@@ -2,23 +2,34 @@
 #
 # Corre los contenedores de Docker del servidor islasgeci.org
 
-# Actualiza imágenes:
-docker pull islasgeci/homepage:latest
-docker pull islasgeci/nerd_demo:latest
-docker pull islasgeci/tablero_api:latest
-docker pull islasgeci/tablero_front:latest
-docker pull islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
-docker pull islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
-docker pull islasgeci/tamanio-poblacional-aves-marinas_front:latest
-docker pull mysql:8
 # Carga credenciales:
-$(docker run --rm --volume secrets_vol:/.vault alpine cat /.vault/.secrets)
+source /home/ciencia_datos/.vault/.secrets
+
 # Corre contenedores
-docker run --detach --publish   80:80   --rm islasgeci/homepage:latest
+docker pull islasgeci/tablero_api:latest
 docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir islasgeci/tablero_api:latest
+
+docker pull mysql:8
 docker run --detach --publish 3306:3306 --rm --volume siap_mysql_vol:/var/lib/mysql --env="MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" --name siap mysql:8
+docker run --detach --publish 3307:3307 --rm --volume islas_mysql_db_data:/var/lib/mysql --env-file /home/ciencia_datos/.env --name islas_mysql_db mysql:8 --default-authentication-plugin=mysql_native_password
+
+docker pull islasgeci/tablero_front:latest
 docker run --detach --publish 5000:80   --rm islasgeci/tablero_front:latest
+
+docker pull islasgeci/nerd_demo:latest
 docker run --detach --publish 8080:8888 --rm islasgeci/nerd_demo:latest
+
+docker pull islasgeci/islas.org.mx:latest
+docker run --detach --publish 8081:80   --rm --env-file /home/ciencia_datos/.env --link islas_mysql_db:mysql islasgeci/islas.org.mx
+
+docker pull islasgeci/tamanio-poblacional-aves-marinas_front:latest
 docker run --detach --publish 8500:80   --rm islasgeci/tamanio-poblacional-aves-marinas_front:latest
+
+docker pull islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
 docker run --detach --publish 8510:4000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-datos:latest
+
+docker pull islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
 docker run --detach --publish 8520:5000 --rm islasgeci/tamanio-poblacional-aves-marinas_api-lambdas:latest
+
+docker pull islasgeci/kata_flbc_jxavierpp:latest
+docker run --detach --publish 8999:80   --rm islasgeci/kata_flbc_jxavierpp:latest

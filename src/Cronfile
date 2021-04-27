@@ -10,8 +10,7 @@ TZ=America/Los_Angeles
 0 2 * * * echo "$(date): uptime" >> ${LOG} && echo "$(uptime -p)" >> ${LOG} && echo "" >> ${LOG}
 
 # Reinicia el servidor
-@weekly echo "$(date): Reinicia el servidor." >> ${LOG} && echo "$(uptime -p && ${HOME}/src/update_server)" >> ${LOG} && /sbin/shutdown -r now
-@reboot echo "Servidor reinició rorrectamente: $(date)" >> ${LOG} && echo "$(date): Inicia contenedores" >> ${LOG} && echo "$(${HOME}/src/start_containers)" >> ${LOG} && echo "" >> ${LOG}
+@reboot echo "Servidor reinició correctamente: $(date)" >> ${LOG} && echo "$(date): Inicia contenedores" >> ${LOG} && echo "$(${HOME}/src/start_containers)" >> ${LOG} && echo "" >> ${LOG}
 @reboot sleep 100 && echo "$(date): docker ps" >> ${LOG} && echo "$(docker ps)" >> ${LOG} && echo "" >> ${LOG}
 @reboot sleep 200 && echo "$(date): uptime" >> ${LOG} && echo "$(uptime -p)" >> ${LOG} && echo "" >> ${LOG}
 

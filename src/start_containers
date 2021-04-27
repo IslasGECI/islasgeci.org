@@ -7,7 +7,7 @@ source /home/ciencia_datos/.vault/.secrets
 
 # Corre contenedores
 docker pull islasgeci/tablero_api:latest
-docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir islasgeci/tablero_api:latest
+docker run --detach --publish  500:5000 --rm --volume tablero_api_vol:/workdir/data islasgeci/tablero_api:latest
 
 docker pull mysql:8
 docker run --detach --publish 3306:3306 --rm --volume siap_mysql_vol:/var/lib/mysql --env="MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" --name siap mysql:8

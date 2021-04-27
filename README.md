@@ -4,7 +4,7 @@ Archivos de código para mantener el VPS de GECI
 
 ## Configura tu estación de trabajo:
 
-1. Configura las credenciales del equipo. ([Ver más
+1. Configura las credenciales del equipo en tu estación de trabajo. ([Ver más
    información.](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing))
 1. Instala Ansible en tu estación de trabajo siguiendo [estas
    instrucciones](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu).

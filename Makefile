@@ -1,4 +1,7 @@
-.PHONY: crontab
+playbook:
+	ansible-playbook ansible-playbook.yml
 
-crontab:
-	sudo < src/Cronfile crontab
+.PHONY: ping playbook
+
+ping:
+	ansible islasgeci --module-name ping --become

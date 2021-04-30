@@ -5,7 +5,7 @@ SHELL=/bin/bash
 TZ=America/Los_Angeles
 
 # Reinicia los contenedores
-@daily echo "$(date): Reinicia contenedores." >> ${LOG} && ${HOME}/src/stop_containers && echo "OK: stop_containers" >> ${LOG} || echo "ERROR: stop_containers" >> ${LOG} && ${HOME}/src/start_containers && curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/d2ddbf3d-323b-4fda-9fa7-6e8c49eb2e1d || echo "ERROR: start_containers" >> ${LOG} && echo "" >> ${LOG}
+@daily curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/d2ddbf3d-323b-4fda-9fa7-6e8c49eb2e1d/start && ${HOME}/src/stop_containers && echo "OK: stop_containers" >> ${LOG} || echo "ERROR: stop_containers" >> ${LOG} && ${HOME}/src/start_containers && curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/d2ddbf3d-323b-4fda-9fa7-6e8c49eb2e1d || echo "ERROR: start_containers" >> ${LOG} && echo "" >> ${LOG}
 0 1 * * * echo "$(date): docker ps" >> ${LOG} && echo "$(docker ps)" >> ${LOG} && echo "" >> ${LOG}
 0 2 * * * echo "$(date): uptime" >> ${LOG} && echo "$(uptime -p)" >> ${LOG} && echo "" >> ${LOG}
 

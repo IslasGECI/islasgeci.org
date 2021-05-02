@@ -4,4 +4,4 @@ playbook:
 .PHONY: ping playbook
 
 ping:
-	ansible islasgeci --module-name ping --become
+	ansible islasgeci.org --module-name ping --become

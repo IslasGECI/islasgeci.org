@@ -33,3 +33,6 @@ docker run --detach --publish 8520:5000 --rm islasgeci/tamanio-poblacional-aves-
 
 docker pull islasgeci/kata_flbc_jxavierpp:latest
 docker run --detach --publish 8999:80   --rm islasgeci/kata_flbc_jxavierpp:latest
+
+docker pull islasgeci/kanban-web-app:latest
+docker run --detach --publish 8501:8080 --rm --env="VUE_APP_BITBUCKET_USERNAME=${BITBUCKET_USERNAME}" --env="VUE_APP_BITBUCKET_PASSWORD=${BITBUCKET_PASSWORD}" islasgeci/kanban-web-app:latest

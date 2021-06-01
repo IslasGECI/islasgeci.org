@@ -10,7 +10,7 @@ Archivos de código para mantener el VPS de GECI
    instrucciones](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu).
 1. Agrega islasgeci.org a tu inventario:
     1. Abre tu inventario para edición: `sudo vim /etc/ansible/hosts`
-    1. Agrega la línea: `islasgeci ansible_host=islasgeci.org ansible_user=ciencia_datos`
+    1. Agrega la línea: `islasgeci.org ansible_host=islasgeci.org ansible_user=ciencia_datos`
     1. Guarda los cambios y sal del editor
 1. (Si no lo haz hecho, crea tu clave SSH: `ssh-keygen`)
 1. Agrega la clave SSH de tu estación de trabajo al servidor: `ssh-copy-id
@@ -22,7 +22,7 @@ Archivos de código para mantener el VPS de GECI
     - Entra al portal de Azure, en _Network security group > Inbound security rules_ agrega una
       regla para permitir el tráfico a los puertos 100-9999.
 1. Configura islasgeci.org mediante Ansible desde tu estación de trabajo:
-    1. Verifica la configuración: `ansible islasgeci --module-name ping --become`
+    1. Verifica la configuración: `ansible islasgeci.org --module-name ping --become`
     1. Clona este repositorio: `git clone https://github.com/IslasGECI/islasgeci.org.git`
     1. Entra al repositorio: `cd islasgeci.org`
     1. Corre el _playbook_: `ansible-playbook ansible-playbook.yml`
